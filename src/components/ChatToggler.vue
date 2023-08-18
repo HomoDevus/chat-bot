@@ -19,6 +19,7 @@ function handleClick() {
   backdrop-filter: blur(10px);
   transition: background-color 0.3s ease-out;
   background-color: #00000010;
+  filter: none;
 }
 
 .button:hover {

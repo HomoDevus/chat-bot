@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, type Ref } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, type Ref } from 'vue'
 
 import { INITIAL_MESSAGE } from '../constsnts'
 import ChatInput from './ChatInput.vue'
@@ -31,7 +31,20 @@ function scrollToBottom() {
   }
 }
 
-onMounted(scrollToBottom)
+function handleKeyupEvent(e: KeyboardEvent) {
+  if (e.key === 'Escape') {
+    handleCloseClick()
+  }
+}
+
+onMounted(() => {
+  scrollToBottom()
+  document.addEventListener('keyup', handleKeyupEvent)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keyup', handleKeyupEvent)
+})
 </script>
 
 <template>
@@ -43,6 +56,7 @@ onMounted(scrollToBottom)
         v-for="message in messages"
         :key="message.id"
         :message="message"
+        @send-message="handleSendMessage"
       />
     </div>
     <ChatInput @send-message="handleSendMessage" />
@@ -65,6 +79,7 @@ onMounted(scrollToBottom)
 .close-button {
   align-self: flex-end;
   margin-bottom: 10px;
+  background-color: transparent;
 }
 
 .chat {

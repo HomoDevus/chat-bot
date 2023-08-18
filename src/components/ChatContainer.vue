@@ -30,5 +30,11 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  padding: 0.8em 1em;
+  transition: filter 0.3s ease-out;
+}
+
+button:hover {
+  filter: brightness(96%);
 }
 </style>
