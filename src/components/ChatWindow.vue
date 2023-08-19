@@ -2,6 +2,7 @@
 import { nextTick, onMounted, onUnmounted, ref, type Ref } from 'vue'
 
 import { INITIAL_MESSAGE } from '../constsnts'
+import { getResponseMessage } from '../uitls'
 import ChatInput from './ChatInput.vue'
 import ChatMessage from './ChatMessage.vue'
 
@@ -20,7 +21,13 @@ function handleSendMessage(messageText: string) {
     messages.value.push({ id: id++, text: messageText, fromUser: true })
 
     nextTick(() => {
-      scrollToBottom()
+      messages.value.push({
+        id: id++,
+        text: getResponseMessage(messageText),
+        fromUser: false,
+      })
+
+      nextTick(scrollToBottom)
     })
   }
 }
