@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import ChatBotContainer from './components/ChatContainer.vue'
 </script>
 
 <template>
@@ -22,8 +21,6 @@ import ChatBotContainer from './components/ChatContainer.vue'
   <main>
     <TheWelcome />
   </main>
-
-  <ChatBotContainer />
 </template>
 
 <style scoped>

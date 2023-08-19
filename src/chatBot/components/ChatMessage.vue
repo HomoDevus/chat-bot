@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   message: Object,
 })
 const emit = defineEmits(['sendMessage'])

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, ref, type Ref } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 
-import { INITIAL_MESSAGE } from '../constsnts'
+import { INITIAL_MESSAGE, type ElementRef } from '../constsnts'
 import { getResponseMessage } from '../uitls'
 import ChatInput from './ChatInput.vue'
 import ChatMessage from './ChatMessage.vue'
@@ -10,7 +10,8 @@ let id = INITIAL_MESSAGE.length
 
 const emit = defineEmits(['toggleChat'])
 const messages = ref(INITIAL_MESSAGE)
-const chatElement: Ref<HTMLElement | null> = ref(null)
+const chatElement: ElementRef = ref(null)
+const windowElement: ElementRef = ref(null)
 
 function handleCloseClick() {
   emit('toggleChat', false)
@@ -41,18 +42,33 @@ function handleKeyupEvent(e: KeyboardEvent) {
   }
 }
 
+function handleClick(e: MouseEvent) {
+  const target = e.target as Element
+
+  if (
+    windowElement.value !== null &&
+    !target.hasAttribute('data-chat-open-button') &&
+    !windowElement.value.contains(target)
+  ) {
+    handleCloseClick()
+  }
+}
+
 onMounted(() => {
   scrollToBottom()
+  // Close window on Escape key press and click outside the window
   document.addEventListener('keyup', handleKeyupEvent)
+  document.addEventListener('click', handleClick)
 })
 
 onUnmounted(() => {
   document.removeEventListener('keyup', handleKeyupEvent)
+  document.removeEventListener('click', handleClick)
 })
 </script>
 
 <template>
-  <div class="window-container">
+  <div class="window-container" ref="windowElement">
     <button @click="handleCloseClick" class="button close-button">❌</button>
     <hr />
     <div class="chat" ref="chatElement">

@@ -1,9 +1,13 @@
+import type { Ref } from "vue"
+
 interface Message {
   id: number
   text: string
   fromUser: boolean
   buttons?: Buttons[]
 }
+
+export type ElementRef = Ref<HTMLElement | null>
 
 export enum Messages {
   greeting = 'Привет! Что я могу для Вас сделать?',

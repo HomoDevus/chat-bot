@@ -22,7 +22,7 @@ function handleSendMessage() {
   </div>
 </template>
 
-<style>
+<style scoped>
 .input-container {
   display: flex;
   gap: 10px;

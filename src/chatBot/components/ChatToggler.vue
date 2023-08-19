@@ -7,11 +7,13 @@ function handleClick() {
 </script>
 
 <template>
-  <button @click="handleClick" class="button">🤖</button>
+  <button @click="handleClick" class="chat-open-button" data-chat-open-button>
+    🤖
+  </button>
 </template>
 
 <style scoped>
-.button {
+.chat-open-button {
   padding: 0.6em;
   font-size: 2rem;
   border-radius: 50%;
@@ -22,7 +24,7 @@ function handleClick() {
   filter: none;
 }
 
-.button:hover {
+.chat-open-button:hover {
   background-color: #00000020;
 }
 </style>
