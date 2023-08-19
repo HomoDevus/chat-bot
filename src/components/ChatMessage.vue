@@ -41,6 +41,7 @@ function sendMessage(text: string) {
   border-radius: 10px;
   padding: 0.4em 1em;
   word-wrap: break-word;
+  color: #2b2b2b;
 }
 
 .message--user {
@@ -49,7 +50,6 @@ function sendMessage(text: string) {
 
 .message--user > .message {
   background-color: #bbdefb;
-  color: black;
 }
 
 .message--bot {

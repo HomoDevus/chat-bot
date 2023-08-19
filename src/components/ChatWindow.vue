@@ -19,16 +19,13 @@ function handleCloseClick() {
 function handleSendMessage(messageText: string) {
   if (messageText) {
     messages.value.push({ id: id++, text: messageText, fromUser: true })
-
-    nextTick(() => {
-      messages.value.push({
-        id: id++,
-        text: getResponseMessage(messageText),
-        fromUser: false,
-      })
-
-      nextTick(scrollToBottom)
+    messages.value.push({
+      id: id++,
+      text: getResponseMessage(messageText),
+      fromUser: false,
     })
+
+    nextTick(scrollToBottom)
   }
 }
 
@@ -85,8 +82,9 @@ onUnmounted(() => {
 
 .close-button {
   align-self: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 0.8em;
   background-color: transparent;
+  padding: 0.4em;
 }
 
 .chat {
