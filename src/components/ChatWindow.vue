@@ -98,4 +98,22 @@ onUnmounted(() => {
   margin-bottom: 20px;
   padding-top: 10px;
 }
+
+.chat::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat::-webkit-scrollbar-track,
+.chat::-webkit-scrollbar-thumb {
+  border: solid 3px transparent;
+  border-radius: 10px;
+}
+
+.chat::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px 10px #f1f1f1;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px #c1c1c1;
+}
 </style>
