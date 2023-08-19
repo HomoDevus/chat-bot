@@ -34,6 +34,7 @@ function handleSendMessage() {
   border: 0;
   border-radius: 8px;
   font-size: 1em;
+  min-width: 100px;
 }
 
 .send-button {

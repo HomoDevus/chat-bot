@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import type { ElementRef } from '../constsnts'
+import type { ElementRef } from '../types'
 import ChatBotToggler from './ChatToggler.vue'
 import ChatBotWindow from './ChatWindow.vue'
 
@@ -14,19 +14,16 @@ function handleToggleChat(value: boolean) {
 
 <template>
   <div class="chat-container" ref="chatContainerRef">
-    <ChatBotWindow
-      v-if="isChatOpen"
-      @toggle-chat="handleToggleChat"
-    />
+    <ChatBotWindow v-if="isChatOpen" @toggle-chat="handleToggleChat" />
     <ChatBotToggler v-else @toggle-chat="handleToggleChat" />
   </div>
 </template>
 
 <style scoped>
 .chat-container {
-  position: absolute;
-  right: 5vw;
-  bottom: 5vw;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
 }
 
 :deep(button) {

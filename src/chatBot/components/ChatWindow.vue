@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 
-import { INITIAL_MESSAGE, type ElementRef } from '../constsnts'
+import { INITIAL_MESSAGE } from '../constsnts'
+import { type ElementRef } from '../types'
 import { getResponseMessage } from '../uitls'
 import ChatInput from './ChatInput.vue'
 import ChatMessage from './ChatMessage.vue'
@@ -92,8 +93,11 @@ onUnmounted(() => {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   background-color: #00000010;
-  height: 40vh;
+  aspect-ratio: 1 / 1.5;
+  min-height: 40vh;
   width: 340px;
+  max-width: calc(100vw - 60px);
+  box-sizing: border-box;
 }
 
 .close-button {

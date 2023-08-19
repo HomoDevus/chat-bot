@@ -1,4 +1,4 @@
-import { Buttons, Messages } from './constsnts'
+import { Buttons, Messages } from './types'
 
 export function getResponseMessage(incomingMessage: string) {
   if (incomingMessage === Buttons.pizza) {
