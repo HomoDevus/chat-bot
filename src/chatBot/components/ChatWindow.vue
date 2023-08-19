@@ -71,7 +71,7 @@ onUnmounted(() => {
 <template>
   <div class="window-container" ref="windowElement">
     <button @click="handleCloseClick" class="button close-button">❌</button>
-    <hr />
+    <hr class="top-divider" />
     <div class="chat" ref="chatElement">
       <ChatMessage
         v-for="message in messages"
@@ -133,5 +133,9 @@ onUnmounted(() => {
 
 .chat::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 10px 10px #c1c1c1;
+}
+
+.top-divider {
+  border-color: lightgrey;
 }
 </style>
